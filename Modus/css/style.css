@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     font-family: Montserrat;
     margin: 0px 0px;
@@ -384,4 +385,392 @@ footer{
     height: 100px;
     padding: 55px 0px;
     min-width: 1400px;
+=======
+*{
+    font-family: Montserrat;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    border-bottom: solid 1px #e7e7e7;
+    background-color: white;
+    z-index: 100;
+}
+.center{
+    max-width: 1140px;
+    min-width: 770px;
+    height: 90px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0px auto;
+}
+.center a img{
+    height: 44px;
+}
+.img{
+    display: inline-block;
+    padding: 23px;
+    margin-left: 0px;
+    height: 44px;
+}
+ul{
+    height: 90px;
+    display: inline-block;
+    margin: 0px;
+    float: right;
+}
+li{
+    display: inline-block;
+}
+.link{
+    display: inline-block;
+    height: 20px;
+    padding: 35px 23px;
+    text-decoration: none;
+    color: #707070;
+    line-height: 20px;
+    font-size: 13px;
+}
+.link:hover{
+    color: #00c7fc;
+}
+.active{
+    color: #00c7fc;
+}
+em{
+    display: block;
+    width: 100%;
+    height: 725px;
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+}
+.head{
+    position: relative;
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/header.jpg") center center no-repeat;
+    background-size: cover;
+    height: 725px;
+    width: 100%;
+    min-width: 1400px;
+}
+.home-content{
+    position: absolute;
+    width: 782px;
+    margin: 220px auto;
+    height: 284px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: white;
+}
+.container{
+    min-width: 720px;
+    max-width: 1140px;
+    height: 284px;
+    text-align: center;
+    padding: 0px 15px;
+}
+.h1{
+    width: 750px;
+    margin: 45px auto 0px auto;
+    height: auto;
+    font-size: 50px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+.h5{
+    display: block;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 14px;
+    height: auto;
+    text-transform: uppercase;
+}
+.home-button{
+    height: 60px;
+    width: 750px;
+    margin: 54px auto 0px auto;
+}
+.home-button a{
+    box-sizing: border-box;
+    width: 198px;
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: solid 1px white;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 19px 0px;
+    color: white;
+    letter-spacing: 3px;
+
+}
+.home-button .blue{
+    background-color: #00c7fc;
+    border:1px solid #00c7fc;
+}
+.littleHistory{
+    padding: 145px 0px;
+    height: 258px;
+    width: 100%;
+    text-align: center;
+    background-color: #f4f4f4;
+    border: none;
+    position: relative;
+    min-width: 1400px;
+}
+.littleHistory .block, .clients .block .text{
+    position: relative;
+}
+.littleHistory .block h2,.clients .block .text h2{
+    color: #231f20;
+    font-size: 25px;
+    margin: 25px;
+    height: 91px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+.littleHistory .block span, .clients .block .text span{
+    position: absolute;
+    height: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/separator.svg") no-repeat center center;
+}
+.littleHistory .block p, .clients .block .text p{
+    color: #637988;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.lunbo{
+    height: 555px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
+}
+.lunbo .block{
+    height: 555px;
+    /*border: solid 1px black;*/
+}
+.services{
+    height: 442px;
+    padding: 145px 0px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
+}
+.services .block{
+    text-align: center;
+    min-width: 1400px;
+}
+.services .block .box{
+    width: 238px;
+    height: 285px;
+    padding: 98px 61px;
+    display: inline-block;
+    margin: 0px 50px;
+}
+.services .block .box .pic{
+    display: inline-block;
+    width: 47px;
+    height: 46px;
+}
+.services .block .box .line{
+    display: block;
+    width: 30px;
+    height: 2px;
+    border-bottom: solid 2px #00c7fc;
+    margin: 20px auto;
+}
+.services .block .box h5{
+    height: 50px;
+}
+.services .block .box p{
+    height: 100px;
+    text-align: center;
+    font-size: 15px;
+    color: #637988;
+    line-height: 1.7;
+}
+.clients{
+    height: 449px;
+    padding: 150px 0px;
+    background-color: #f4f4f4;
+    text-align: center;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
+}
+.clients .text{
+    height: auto;
+    margin-bottom: 150px;
+}
+.clients .pic{
+    width: 970px;
+    height: 110px;
+    margin: 0px auto;
+}
+.clients .pic .tu{
+    width: 94px;
+    height: 106px;
+    display: inline-block;
+    margin: 0px 70px;
+}
+.clients .pic .one{
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/stephenson_web_design.svg") no-repeat center center;
+}
+.clients .pic .two{
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/john_doe_design.svg") no-repeat center center;
+}
+.clients .pic .three{
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/john_stephenson.svg") no-repeat center center;
+}
+.clients .pic .four{
+    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/stephenson_william.svg") no-repeat center center;
+}
+.contact{
+    height: 550px;
+    background-color: black;
+    padding: 55px 0px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
+}
+.contact .block{
+    width: 1310px;
+    margin: 0px auto;
+    color: white;
+
+}
+.about{
+    float: left;
+}
+.us{
+    float: right;
+    position: relative;
+}
+.about, .us{
+    padding: 70px 90px;
+    width: 370px;
+    height: 350px;
+    border: solid 1px white;
+    display: inline-block;
+    margin: 0px 50px;
+}
+.about h4, .us h4{
+    font-size: 30px;
+    height: 3em;
+    text-align: center;
+}
+.about span{
+    display: block;
+    height: 2px;
+    width: 40px;
+    border-bottom: solid 2px #00c7fc;
+    margin: 0px auto;
+    margin-bottom: 60px;
+}
+.about p{
+    text-align: center;
+}
+.us span{
+    display: inline-block;
+    height: auto;
+    margin: 8px 0px;
+}
+.us input, .us textarea{
+    outline: none;
+    height: 25px;
+    resize: none;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    margin: 10px 0px;
+    background-size: 25px;
+    line-height: 25px;
+    background: linear-gradient(transparent 24px, #707070 1px);
+    border: none;
+}
+.us input{
+    height: 25px;
+}
+.us textarea{
+    height: 25px;
+}
+.us button{
+    width: 100px;
+    height: 2em;
+    color: #00c7fc;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+}
+.us button:hover{
+    color: white;
+}
+#preview, #getTheme{
+    transition: all 0.5s;
+}
+.home-content .arrow{
+    width: 21px;
+    height: 80px;
+    margin: 120px auto 0px;
+    position: relative;
+}
+.home-content .arrow a{
+    display: inline-block;
+    height: 60px;
+    width: 21px;
+}
+.home-content #arrow{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    top: 60px;
+    transition: all 0.3s ease;
+}
+#little{
+    position: absolute;
+    top: -90px;
+}
+#portfolio{
+    position: absolute;
+    top: -90px;
+}
+#services{
+    position: absolute;
+    top: -90px;
+}
+#clients{
+    position: absolute;
+    top: -90px;
+}
+#contact{
+    position: absolute;
+    bottom: 90px;
+}
+footer{
+    background-color: #00c7fc;
+    width: 100%;
+    height: 100px;
+    padding: 55px 0px;
+    min-width: 1400px;
+>>>>>>> 8989eb6d002e06932a42ef947de2b71f71884624
 }
