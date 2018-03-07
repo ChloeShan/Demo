@@ -1,4 +1,5 @@
 *{
+    font-family: Montserrat;
     margin: 0px 0px;
     padding: 0px 0px;
     height: 100%;
@@ -65,12 +66,12 @@ em{
     z-index: 1;
 }
 .head{
-    border: solid 1px blue;
     position: relative;
     background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/header.jpg") center center no-repeat;
     background-size: cover;
     height: 725px;
     width: 100%;
+    min-width: 1400px;
 }
 .home-content{
     position: absolute;
@@ -95,6 +96,7 @@ em{
     height: auto;
     font-size: 50px;
     line-height: 1.1;
+    text-transform: uppercase;
 }
 .h5{
     display: block;
@@ -102,6 +104,7 @@ em{
     line-height: 1.1;
     font-size: 14px;
     height: auto;
+    text-transform: uppercase;
 }
 .home-button{
     height: 60px;
@@ -121,15 +124,11 @@ em{
     padding: 19px 0px;
     color: white;
     letter-spacing: 3px;
+
 }
 .home-button .blue{
     background-color: #00c7fc;
     border:1px solid #00c7fc;
-}
-.home-content .arrow{
-    width: 21px;
-    height: 27px;
-    margin: 180px auto 0px;
 }
 .littleHistory{
     padding: 145px 0px;
@@ -138,6 +137,8 @@ em{
     text-align: center;
     background-color: #f4f4f4;
     border: none;
+    position: relative;
+    min-width: 1400px;
 }
 .littleHistory .block, .clients .block .text{
     position: relative;
@@ -148,6 +149,7 @@ em{
     margin: 25px;
     height: 91px;
     display: inline-block;
+    text-transform: uppercase;
 }
 .littleHistory .block span, .clients .block .text span{
     position: absolute;
@@ -167,17 +169,24 @@ em{
 }
 .lunbo{
     height: 555px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
 }
 .lunbo .block{
     height: 555px;
-    border: solid 1px black;
+    /*border: solid 1px black;*/
 }
 .services{
     height: 442px;
     padding: 145px 0px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
 }
 .services .block{
     text-align: center;
+    min-width: 1400px;
 }
 .services .block .box{
     width: 238px;
@@ -213,6 +222,9 @@ em{
     padding: 150px 0px;
     background-color: #f4f4f4;
     text-align: center;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
 }
 .clients .text{
     height: auto;
@@ -241,12 +253,15 @@ em{
 .clients .pic .four{
     background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/stephenson_william.svg") no-repeat center center;
 }
-.contect{
+.contact{
     height: 550px;
     background-color: black;
     padding: 55px 0px;
+    position: relative;
+    min-width: 1400px;
+    width: 100%;
 }
-.contect .block{
+.contact .block{
     width: 1310px;
     margin: 0px auto;
     color: white;
@@ -322,8 +337,51 @@ em{
 .us button:hover{
     color: white;
 }
+#preview, #getTheme{
+    transition: all 0.5s;
+}
+.home-content .arrow{
+    width: 21px;
+    height: 80px;
+    margin: 120px auto 0px;
+    position: relative;
+}
+.home-content .arrow a{
+    display: inline-block;
+    height: 60px;
+    width: 21px;
+}
+.home-content #arrow{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    top: 60px;
+    transition: all 0.3s ease;
+}
+#little{
+    position: absolute;
+    top: -90px;
+}
+#portfolio{
+    position: absolute;
+    top: -90px;
+}
+#services{
+    position: absolute;
+    top: -90px;
+}
+#clients{
+    position: absolute;
+    top: -90px;
+}
+#contact{
+    position: absolute;
+    bottom: 90px;
+}
 footer{
     background-color: #00c7fc;
-    height: 25px;
+    width: 100%;
+    height: 100px;
     padding: 55px 0px;
+    min-width: 1400px;
 }
