@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Modus - Single Page Portfolio Theme</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <style>
 
     </style>
@@ -13,7 +14,7 @@
         <div class="center">
             <a class="img" href="#home"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/logo.png"></a>
             <ul class="dh">
-                <li><a href="#home" class="link active">HOME</a></li><li><a href="#" class="link a">PORTFOLIO</a></li><li><a href="#" class="link a">SERVICES</a></li><li><a href="#" class="link a">CLIENTS</a></li><li><a href="#" class="link a">CONTACT</a></li>
+                <li><a id="homeB" href="#home" class="link active">HOME</a></li><li><a href="#portfolio" id="porB" class="link a">PORTFOLIO</a></li><li><a href="#services" id="serB" class="link a">SERVICES</a></li><li><a href="#clients" id="cliB" class="link a">CLIENTS</a></li><li><a href="#contact" id="conB" class="link a">CONTACT</a></li>
             </ul>
         </div>
     </nav>
@@ -21,103 +22,154 @@
     <div class="head">
         <div class="home-content">
             <div class="container">
-                <span class="h5">Design / Development / Photography</span>
-                <h1 class="h1">Creativity have new level</h1>
-                <div class="home-button">
-                    <a href="#"><span>PREVIEW</span></a>
-                    <a href="#" class="blue"><span>GET THEME</span></a>
+                    <span class="h5">Design / Development / Photography</span>
+                    <h1 class="h1">Creativity have new level</h1>
+                    <div class="home-button">
+                        <a href="#" id="preview"><span>PREVIEW</span></a>
+                        <a href="#" class="blue" id="getTheme"><span>GET THEME</span></a>
+                    </div>
                 </div>
-            </div>
             <div class="arrow">
-                <a href="#">
-                    <img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/down_icon.svg">
+                <a href="#little" id="littleB">
+                    <img id="arrow" src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/down_icon.svg">
                 </a>
             </div>
         </div>
         <em></em>
     </div>
     <section class="littleHistory">
-        <div class="block">
-            <h2>Little history</h2>
-            <span></span>
-            <p>Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-            <br>Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit.
-            <br>Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-            <br>Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta.
-            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </section>
+            <a id="little"></a>
+            <div class="block">
+                <h2>Little history</h2>
+                <span></span>
+                <p>Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                    <br>Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit.
+                    <br>Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
+                    <br>Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta.
+                    <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
     <section class="lunbo">
+        <a id="portfolio"></a>
         <div class="block"></div>
     </section>
     <section class="services">
+        <a id="services"></a>
         <div class="block">
-            <div class="box idea">
-                <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/idea.svg"></span>
-                <span class="line"></span>
-                <h5>idea</h5>
-                <p>Vivamus suscipit tortor eget felis porttitor
-                    volutpat. Vestibulum ac diam sit amet
-                    quam vehicula elementum sed sit amet dui.
-                    Pellentesque in ipsum id orci. </p>
+                <div class="box idea">
+                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/idea.svg"></span>
+                    <span class="line"></span>
+                    <h5 style="letter-spacing: 0.2em; font-size: 15px; text-transform: uppercase">idea</h5>
+                    <p>Vivamus suscipit tortor eget felis porttitor
+                        volutpat. Vestibulum ac diam sit amet
+                        quam vehicula elementum sed sit amet dui.
+                        Pellentesque in ipsum id orci. </p>
+                </div>
+                <div class="box work">
+                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/work.svg"></span>
+                    <span class="line"></span>
+                    <h5 style="letter-spacing: 0.2em; font-size: 15px;text-transform: uppercase">work</h5>
+                    <p>Vivamus suscipit tortor eget felis porttitor
+                        volutpat. Vestibulum ac diam sit amet
+                        quam vehicula elementum sed sit amet dui.
+                        Pellentesque in ipsum id orci. </p>
+                </div>
+                <div class="box deliver">
+                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/deliver.svg"></span>
+                    <span class="line"></span>
+                    <h5 style="letter-spacing: 0.2em; font-size: 15px;text-transform: uppercase">deliver</h5>
+                    <p>Vivamus suscipit tortor eget felis porttitor
+                        volutpat. Vestibulum ac diam sit amet
+                        quam vehicula elementum sed sit amet dui.
+                        Pellentesque in ipsum id orci. </p>
+                </div>
             </div>
-            <div class="box work">
-                <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/work.svg"></span>
-                <span class="line"></span>
-                <h5>work</h5>
-                <p>Vivamus suscipit tortor eget felis porttitor
-                    volutpat. Vestibulum ac diam sit amet
-                    quam vehicula elementum sed sit amet dui.
-                    Pellentesque in ipsum id orci. </p>
-            </div>
-            <div class="box deliver">
-                <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/deliver.svg"></span>
-                <span class="line"></span>
-                <h5>deliver</h5>
-                <p>Vivamus suscipit tortor eget felis porttitor
-                    volutpat. Vestibulum ac diam sit amet
-                    quam vehicula elementum sed sit amet dui.
-                    Pellentesque in ipsum id orci. </p>
-            </div>
-        </div>
     </section>
     <section class="clients">
+        <a id="clients"></a>
+            <div class="block">
+                <div class="text">
+                    <h2>our clients are</h2>
+                    <span></span>
+                    <p>“Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet<br> dui.
+                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit”</p>
+                </div>
+                <div class="pic">
+                    <div class="tu one"></div>
+                    <div class="tu two"></div>
+                    <div class="tu three"></div>
+                    <div class="tu four"></div>
+                </div>
+            </div>
+        </section>
+    <section class="contact">
         <div class="block">
-            <div class="text">
-                <h2>our clients are</h2>
-                <span></span>
-                <p>“Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet<br> dui.
-                    Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit”</p>
+                <div class="about">
+                    <h4>about us</h4>
+                    <span class="line"></span>
+                    <p>
+                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Vivamus suscipit tortor eget felis.
+                    </p>
+                </div>
+                <div class="us">
+                    <h4>about us</h4>
+                    <span>email</span><br>
+                    <input type="text"><br>
+                    <span>message</span><br>
+                    <textarea rows="2"></textarea><br>
+                    <button>send</button>
+                </div>
             </div>
-            <div class="pic">
-                <div class="tu one"></div>
-                <div class="tu two"></div>
-                <div class="tu three"></div>
-                <div class="tu four"></div>
-            </div>
-        </div>
-    </section>
-    <section class="contect">
-        <div class="block">
-            <div class="about">
-                <h4>about us</h4>
-                <span class="line"></span>
-                <p>
-                    Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Vivamus suscipit tortor eget felis.
-                </p>
-            </div>
-            <div class="us">
-                <h4>about us</h4>
-                <span>email</span><br>
-                <input type="text"><br>
-                <span>message</span><br>
-                <textarea rows="2"></textarea><br>
-                <button>send</button>
-            </div>
-        </div>
+        <a id="contact"></a>
     </section>
     <footer>
 
-    </footer>
+        </footer>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(setInterval(arrow, 2000));
+        function arrow() {
+            $('#arrow').css('top','20px');
+            setTimeout(function () {
+                $('#arrow').css('top','50px');
+            },350);
+            setTimeout(function () {
+                $('#arrow').css('top','30px');
+            },650);
+            setTimeout(function () {
+                $('#arrow').css('top','60px');
+            },950);
+        }
+        $("#preview").mouseenter(function () {
+            $(this).css({"background-color":"white",'color':'black'});
+        });
+        $("#getTheme").mouseenter(function () {
+            $(this).css({"background-color":"white",'color':'#00c7fc'});
+        });
+        $("#getTheme").mouseleave(function () {
+            $(this).css({"background-color":"#00c7fc",'color':'white'});
+        });
+        $("#preview").mouseleave(function () {
+            $(this).css({"background-color":"transparent",'color':'white'});
+        });
+        $("#homeB").click(function () {
+            $('html,body').animate({scrollTop: $('#home').offset().top}, 1000);
+        });
+        $("#porB").click(function () {
+            $('html,body').animate({scrollTop: $('#portfolio').offset().top}, 1000);
+        });
+        $("#littleB").click(function () {
+            $('html,body').animate({scrollTop: $('#little').offset().top}, 1000);
+        });
+        $("#serB").click(function () {
+            $('html,body').animate({scrollTop: $('#services').offset().top}, 1000);
+        });
+        $("#cliB").click(function () {
+            $('html,body').animate({scrollTop: $('#clients').offset().top}, 1000);
+        });
+        $("#conB").click(function () {
+            $('html,body').animate({scrollTop: $('#contact').offset().top}, 1000);
+        });
+    </script>
 </body>
 </html>
