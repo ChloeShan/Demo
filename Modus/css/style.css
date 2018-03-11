@@ -265,6 +265,11 @@ em{
     margin: 0px auto;
     color: white;
 }
+.contact .block h4{
+    font-family: Montserrat;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
 .about{
     float: left;
 }
@@ -300,6 +305,7 @@ em{
     display: inline-block;
     height: auto;
     margin: 8px 0px;
+    text-transform: capitalize;
 }
 .us input, .us textarea{
     outline: none;

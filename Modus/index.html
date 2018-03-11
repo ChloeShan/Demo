@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Modus - Single Page Portfolio Theme</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider-pro.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <style>
+        #my-slider{
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sp-slide{
+            position: absolute;
+        }
+        .sp-layer{
+            display: inline-block;
+            width: 320px;
+            height: 370px;
+            background-color: #04a3ce;
+            position: absolute;
+            top: 500px;
+
+        }
 
     </style>
 </head>
@@ -51,7 +69,58 @@
         </section>
     <section class="lunbo">
         <a id="portfolio"></a>
-        <div class="block"></div>
+        <div class="slider-pro" id="my-slider">
+            <div class="sp-slides">
+                <div class="sp-slide">
+                    <img src="img/01.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+                <div class="sp-slide">
+                    <img src="img/02.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+                <div class="sp-slide">
+                    <img src="img/03.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+                <div class="sp-slide">
+                    <img src="img/04.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+                <div class="sp-slide">
+                    <img src="img/05.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+                <div class="sp-slide">
+                    <img src="img/06.jpg" class="sp-image">
+                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						volutpat. Vestibulum ac diam sit amet
+						quam vehicula elementum sed sit amet dui.
+						Pellentesque in ipsum id orci.
+                    </span>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="services">
         <a id="services"></a>
@@ -119,13 +188,14 @@
                     <textarea rows="2"></textarea><br>
                     <button>send</button>
                 </div>
-            </div>
+        </div>
         <a id="contact"></a>
     </section>
     <footer>
 
-        </footer>
+    </footer>
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.sliderPro.min.js"></script>
     <script>
         $(setInterval(arrow, 2000));
         function arrow() {
@@ -170,6 +240,20 @@
         $("#conB").click(function () {
             $('html,body').animate({scrollTop: $('#contact').offset().top}, 1000);
         });
+        $(function () {
+            $('#my-slider').sliderPro({
+                width : 320,
+                height : 555,
+                visibleSize: '85%',
+                imageScaleMode : 'contain',
+                slideDistance : 0,
+                centerImage : false,
+            });
+            var slider = $('#my-slider').data('sliderPro');
+            $('.sp-slide').mouseenter(function () {
+                document.title = slider.getSelectedSlide();
+            })
+        })
     </script>
 </body>
 </html>
