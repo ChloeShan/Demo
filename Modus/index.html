@@ -4,33 +4,32 @@
     <meta charset="UTF-8">
     <title>Modus - Single Page Portfolio Theme</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/slider-pro.min.css">
+    <link rel="stylesheet" href="slick-1.8.0/slick/slick.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <style>
-        #my-slider{
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .sp-slide{
+        .introduction{
+            box-sizing: border-box;
             position: absolute;
-        }
-        .sp-layer{
             display: inline-block;
+            border: solid 1px black;
+            padding: 61px 33px 54px;
+            top: 555px;
             width: 320px;
             height: 370px;
             background-color: #04a3ce;
-            position: absolute;
-            top: 500px;
-
+            color: white;
+            font-size: 15px;
+            line-height: 1.7;
+            font-family: Montserrat;
+            text-align: center;
+            transition: all .3s ease-out;
         }
-
     </style>
 </head>
 <body>
     <nav>
         <div class="center">
-            <a class="img" href="#home"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/logo.png"></a>
+            <a class="img" href="#home"><img src="img/logo.png" id="homeP"></a>
             <ul class="dh">
                 <li><a id="homeB" href="#home" class="link active">HOME</a></li><li><a href="#portfolio" id="porB" class="link a">PORTFOLIO</a></li><li><a href="#services" id="serB" class="link a">SERVICES</a></li><li><a href="#clients" id="cliB" class="link a">CLIENTS</a></li><li><a href="#contact" id="conB" class="link a">CONTACT</a></li>
             </ul>
@@ -49,7 +48,7 @@
                 </div>
             <div class="arrow">
                 <a href="#little" id="littleB">
-                    <img id="arrow" src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/down_icon.svg">
+                    <img id="arrow" src="img/down_icon.svg">
                 </a>
             </div>
         </div>
@@ -69,56 +68,48 @@
         </section>
     <section class="lunbo">
         <a id="portfolio"></a>
-        <div class="slider-pro" id="my-slider">
-            <div class="sp-slides">
-                <div class="sp-slide">
-                    <img src="img/01.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+        <div id="my-block">
+            <div class="slide">
+                <img src="img/01.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
-                <div class="sp-slide">
-                    <img src="img/02.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						Pellentesque in ipsum id orci. </span>
+            </div>
+            <div class="slide">
+                <img src="img/02.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
-                <div class="sp-slide">
-                    <img src="img/03.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						Pellentesque in ipsum id orci. </span>
+            </div>
+            <div class="slide">
+                <img src="img/03.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
-                <div class="sp-slide">
-                    <img src="img/04.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						Pellentesque in ipsum id orci. </span>
+            </div>
+            <div class="slide">
+                <img src="img/04.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
-                <div class="sp-slide">
-                    <img src="img/05.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						Pellentesque in ipsum id orci. </span>
+            </div>
+            <div class="slide">
+                <img src="img/05.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
-                <div class="sp-slide">
-                    <img src="img/06.jpg" class="sp-image">
-                    <span class="introduction sp-layer">Vivamus suscipit tortor eget felis porttitor
+						Pellentesque in ipsum id orci. </span>
+            </div>
+            <div class="slide">
+                <img src="img/06.jpg" class="sp-image">
+                <span class="introduction">Vivamus suscipit tortor eget felis porttitor
 						volutpat. Vestibulum ac diam sit amet
 						quam vehicula elementum sed sit amet dui.
-						Pellentesque in ipsum id orci.
-                    </span>
-                </div>
+						Pellentesque in ipsum id orci. </span>
             </div>
         </div>
     </section>
@@ -126,7 +117,7 @@
         <a id="services"></a>
         <div class="block">
                 <div class="box idea">
-                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/idea.svg"></span>
+                    <span class="pic"><img src="img/idea.svg"></span>
                     <span class="line"></span>
                     <h5 style="letter-spacing: 0.2em; font-size: 15px; text-transform: uppercase">idea</h5>
                     <p>Vivamus suscipit tortor eget felis porttitor
@@ -135,7 +126,7 @@
                         Pellentesque in ipsum id orci. </p>
                 </div>
                 <div class="box work">
-                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/work.svg"></span>
+                    <span class="pic"><img src="img/work.svg"></span>
                     <span class="line"></span>
                     <h5 style="letter-spacing: 0.2em; font-size: 15px;text-transform: uppercase">work</h5>
                     <p>Vivamus suscipit tortor eget felis porttitor
@@ -144,7 +135,7 @@
                         Pellentesque in ipsum id orci. </p>
                 </div>
                 <div class="box deliver">
-                    <span class="pic"><img src="http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/services/deliver.svg"></span>
+                    <span class="pic"><img src="img/deliver.svg"></span>
                     <span class="line"></span>
                     <h5 style="letter-spacing: 0.2em; font-size: 15px;text-transform: uppercase">deliver</h5>
                     <p>Vivamus suscipit tortor eget felis porttitor
@@ -195,7 +186,7 @@
 
     </footer>
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.sliderPro.min.js"></script>
+    <script src="slick-1.8.0/slick/slick.min.js"></script>
     <script>
         $(setInterval(arrow, 2000));
         function arrow() {
@@ -222,7 +213,7 @@
         $("#preview").mouseleave(function () {
             $(this).css({"background-color":"transparent",'color':'white'});
         });
-        $("#homeB").click(function () {
+        $("#homeB,#homeP").click(function () {
             $('html,body').animate({scrollTop: $('#home').offset().top}, 1000);
         });
         $("#porB").click(function () {
@@ -241,18 +232,33 @@
             $('html,body').animate({scrollTop: $('#contact').offset().top}, 1000);
         });
         $(function () {
-            $('#my-slider').sliderPro({
-                width : 320,
-                height : 555,
-                visibleSize: '85%',
-                imageScaleMode : 'contain',
-                slideDistance : 0,
-                centerImage : false,
-            });
-            var slider = $('#my-slider').data('sliderPro');
-            $('.sp-slide').mouseenter(function () {
-                document.title = slider.getSelectedSlide();
+            $('#my-block').slick({
+                slidesToShow: 5,
+                slidesToScroll: 3,
+                autoplay: true,
+                arrows: false,
+                variableWidth: true,
+                responsive: [
+                    {
+                        breakpoint: 960,
+                        settings: {
+                            slidesToScroll: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 640,
+                        settings: {
+                            slidesToScroll: 1,
+                        }
+                    },
+                ]
             })
+            $('.sp-image').mouseenter(function () {
+                $(this).next().css({top:'187px'});
+            });
+            $('.sp-image').mouseleave(function () {
+                $(this).next().css({top:'555px'});
+            });
         })
     </script>
 </body>

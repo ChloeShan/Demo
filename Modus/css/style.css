@@ -67,7 +67,7 @@ em{
 }
 .head{
     position: relative;
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/header.jpg") center center no-repeat;
+    background: url("../img/header.jpg") center center no-repeat;
     background-size: cover;
     height: 725px;
     width: 100%;
@@ -160,7 +160,7 @@ em{
     display: inline-block;
     width: 100px;
     height: 100px;
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/separator.svg") no-repeat center center;
+    background: url("../img/separator.svg") no-repeat center center;
 }
 .littleHistory .block p, .clients .block .text p{
     color: #637988;
@@ -241,16 +241,16 @@ em{
     margin: 0px 70px;
 }
 .clients .pic .one{
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/stephenson_web_design.svg") no-repeat center center;
+    background: url("../img/stephenson_web_design.svg") no-repeat center center;
 }
 .clients .pic .two{
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/john_doe_design.svg") no-repeat center center;
+    background: url("../img/john_doe_design.svg") no-repeat center center;
 }
 .clients .pic .three{
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/john_stephenson.svg") no-repeat center center;
+    background: url("../img/john_stephenson.svg") no-repeat center center;
 }
 .clients .pic .four{
-    background: url("http://demo.cssmoban.com/cssthemes4/gbts_6_modus/img/svg/clients/stephenson_william.svg") no-repeat center center;
+    background: url("../img/stephenson_william.svg") no-repeat center center;
 }
 .contact{
     height: 550px;
