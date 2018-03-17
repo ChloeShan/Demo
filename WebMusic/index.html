@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐播放器</title>
+</head>
+<style>
+    audio{
+        width: 500px;
+    }
+</style>
+<body>
+    <input type="text" value="信仰" id="sousuo">
+    <button id="center">点击</button>
+    <audio controls="controls">
+        <source id="music" src=""/>
+    </audio><br>
+    <div id="images"></div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    var source = document.getElementsByTagName('source')[0];
+    var audio = document.getElementsByTagName('audio')[0];
+    var value;
+    var id;
+    var url;
+    var search;
+    $('#center').click(function () {
+        value = $("#sousuo").val();
+        $.ajax({
+            type: "get",
+            url: "http://localhost:3000/search",
+            data: {keywords:value},
+            dataType: "json",
+            success: function (data) {
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:3000/music/url",
+                    data: {id:data.result.songs[0].id},
+                    dataType: "json",
+                    success: function (data) {
+                        url = data.data[0].url;
+                        source.src = url;
+                        audio.load();
+                    }
+                })
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
