@@ -5,14 +5,132 @@
     <title>音乐播放器</title>
 </head>
 <style>
-    audio{
+    *{
+        padding: 0px;
+        margin: 0px;
+        font-family: 方正兰亭超细黑简体;
+    }
+    .searchBox{
+        width: 600px;
+        margin:20px auto;
+        text-align: center;
+    }
+    .searchBox input{
+        outline: none;
+        border: solid 5px cornflowerblue;
+        background-color: transparent;
+        opacity: 0.9;
+        height: 30px;
+        width: 300px;
+        font-size: 20px;
+    }
+    .searchBox button{
+        width: 100px;
+        height: 40px;
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        outline: none;
+        font-size: 20px;
+    }
+    .searchBox button:hover{
+        cursor: pointer;
+    }
+    .resultBox .content{
+        display: block;
         width: 500px;
+        height: 100px;
+        border: solid;
+        position: relative;
+    }
+    .resultBox .content img{
+        width: 100px;
+    }
+    .resultBox .content .song{
+        position: absolute;
+        top: 10px;
+        font-size: 20px;
+    }
+    .resultBox table{
+        width: 900px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin: 0px auto;
+    }
+    .resultBox table .head{
+        background-color: cornflowerblue;
+    }
+    .resultBox table .context{
+        font-size: 15px;
+    }
+    .resultBox table .context:hover{
+        color: white;
+        background-color: royalblue;
+    }
+    .resultBox table .context .songName:hover{
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+
+    }
+    .resultBox table .head th{
+        color: white;
+    }
+    .resultBox table tr{
+        height: 2em;
+    }
+    .resultBox table tr th, .resultBox table tr td{
+        text-align: center;
+        width: 300px;
+    }
+    audio{
+        display: block;
+        width: 500px;
+        margin: 0px auto;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:visited:hover{
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .button{
+        width: 200px;
+        margin: 0px auto;
+    }
+    .button button{
+        width: 80px;
+        height: 50px;
+        outline: none;
+        border: white solid 1px;
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 20px;
     }
 </style>
 <body>
-    <input type="text" value="信仰" id="sousuo">
-    <button id="center">点击</button>
-    <audio controls="controls">
+    <div class="searchBox">
+        <input type="text" value="请输入歌曲" id="sousuo">
+        <button id="search">搜索</button>
+    </div>
+    <div class="resultBox">
+        <table cellspacing="0">
+            <tr class="head">
+                <th>下载</th>
+                <th>歌曲</th>
+                <th>歌手</th>
+                <th>专辑</th>
+            </tr>
+        </table>
+        <div class="button">
+            <button class='up'>上一页</button>
+            <button class='down'>下一页</button>
+        </div>
+    </div>
+    <audio controls="controls" autoplay="autoplay">
         <source id="music" src=""/>
     </audio><br>
     <div id="images"></div>
@@ -21,30 +139,66 @@
     var source = document.getElementsByTagName('source')[0];
     var audio = document.getElementsByTagName('audio')[0];
     var value;
-    var id;
+    var id = new Array();
     var url;
-    var search;
-    $('#center').click(function () {
+    var songName = new Array();
+    var singer = new Array();
+    var album = new Array();
+    var page = 1;
+    var limit = 15;
+    function run() {
         value = $("#sousuo").val();
         $.ajax({
             type: "get",
             url: "http://localhost:3000/search",
-            data: {keywords:value},
+            data: {keywords:value,limit:limit,offset:(page - 1) * limit},
             dataType: "json",
-            success: function (data) {
-                $.ajax({
-                    type: "get",
-                    url: "http://localhost:3000/music/url",
-                    data: {id:data.result.songs[0].id},
-                    dataType: "json",
-                    success: function (data) {
-                        url = data.data[0].url;
-                        source.src = url;
-                        audio.load();
-                    }
+            success: function list(data) {
+                $("table").html(" <tr class='head'><th>下载</th><th>歌曲</th><th>歌手</th><th>专辑</th></tr>");
+                $.each(data.result.songs,function (i,item) {
+                    id[i] = item.id;
+                    songName[i] = item.name;
+                    singer[i] = item.artists[0].name;
+                    album[i] = item.album.name;
+                    url = 'http://music.163.com/song/media/outer/url?id='+ id[i] +'.mp3';
+                    //alert(id + name + singer + album);
+                    $("table").append(" <tr class='context'><td class='download'><a href='#'>下载</a></td><td class='songName'>" + songName[i] + "</td><td class='singerName'>" + singer[i] + "</td><td class='albumName'>" + album[i] + "</td></tr>");
+                });
+                $(".download").on('click',function () {
+                    var i = $($(this).parent()).index();
+                    $($(this).children()).attr('href',"http://music.163.com/song/media/outer/url?id=" + id[i-1] + ".mp3");
+                    /*alert($($(this).children()).attr('href'));*/
+                })
+                $(".songName").on('click',function () {
+                    var i = $($(this).parent()).index();
+                    /*alert(i);*/
+                    $.ajax({
+                        type: "get",
+                        url: "http://localhost:3000/music/url",
+                        data: {id:id[i-1]},
+                        dataType: "json",
+                        success: function (data) {
+                            /*alert("http://localhost:3000/music/url?id="+id[i-1]);*/
+                            url = data.data[0].url;
+                            source.src = url;
+                            audio.load();
+                        }
+                    })
                 })
             }
         });
+    }
+    $('#search').on('click',run);
+    $(".up").on('click',function () {
+        if(page != 1)
+            page = page - 1;
+        /*alert(page);*/
+        run();
+    });
+    $(".down").on('click',function () {
+        page = page + 1;
+        /*alert(page);*/
+        run();
     });
 
 </script>
