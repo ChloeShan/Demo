@@ -150,7 +150,7 @@
         value = $("#sousuo").val();
         $.ajax({
             type: "get",
-            url: "http://localhost:3000/search",
+            url: "http://musicapi.leanapp.cn/search",
             data: {keywords:value,limit:limit,offset:(page - 1) * limit},
             dataType: "json",
             success: function list(data) {
@@ -174,7 +174,7 @@
                     /*alert(i);*/
                     $.ajax({
                         type: "get",
-                        url: "http://localhost:3000/music/url",
+                        url: "http://musicapi.leanapp.cn/music/url",
                         data: {id:id[i-1]},
                         dataType: "json",
                         success: function (data) {
