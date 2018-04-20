@@ -5,32 +5,162 @@
     <title>ToDo List</title>
     <link type="text/css" rel="stylesheet" href="css/clear.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        .hidden{
+            display: none;
+        }
+        .login{
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-200px) translateX(-150px);
+            display: block;
+        }
+        .login .box{
+            height: 100%;
+            border: 2px solid seagreen;
+            text-align: center;
+        }
+        .login .box span{
+            display: block;
+            font-size: 25px;
+            padding: 20px 0px;
+            text-align: center;
+            line-height: 25px;
+        }
+        .login .box .name{
+            box-sizing: border-box;
+            height: 50px;
+            line-height: 30px;
+            width: 80%;
+            margin: 50px 0px;
+            font-size: 20px;
+            outline: none;
+            border: none;
+            border-bottom: solid 1px black;
+
+        }
+    </style>
 </head>
 <body>
-    <nav id="guide" class="blue">
-        <h3 class="h3">TODO List</h3>
-    </nav>
-    <div class="function">
-        <input id="input" type="text" placeholder="请输入您的任务">
-    </div>
-    <div class="list">
-        <div class="unfinished">
-            <nav class="blue meddle">
-                <h3 class="h3">待办任务</h3>
-            </nav>
-            <ul id="unfinished-list">
-
-            </ul>
+    <div class="login">
+        <div class="box">
+            <span>登陆TODOLIST</span>
+            <input class="name" type="text" placeholder="请输入登录名">
+            <button id="test">测试</button>
+            <button id="add">添加</button>
         </div>
-        <div class="finished">
-            <nav class="blue meddle">
-                <h3 class="h3">已完成的任务</h3>
-            </nav>
-            <ul id="finished-list">
-
-            </ul>
+        <div class="test">
+            <div id="display"></div>
+        </div>
+    </div>
+    <div class="hidden">
+        <nav id="guide" class="blue">
+            <h3 class="h3">TODO List</h3>
+        </nav>
+        <div class="function">
+            <input id="input" type="text" placeholder="请输入您的任务">
+        </div>
+        <div class="list">
+            <div class="unfinished">
+                <nav class="blue meddle">
+                    <h3 class="h3">待办任务</h3>
+                </nav>
+                <ul id="unfinished-list"></ul>
+            </div>
+            <div class="finished">
+                <nav class="blue meddle">
+                    <h3 class="h3">已完成的任务</h3>
+                </nav>
+                <ul id="finished-list"></ul>
+            </div>
         </div>
     </div>
     <script src="js/js.js"></script>
+    <script>
+        var login = document.getElementsByClassName('login')[0];
+        var user = document.getElementsByClassName('name')[0];
+        var hidden = document.getElementsByClassName('hidden')[0];
+        var test = document.getElementById('test');
+        var display = document.getElementById('display');
+        var add = document.getElementById('add');
+        var username;
+        var arrayList = new Array();
+        var using;
+        user.addEventListener('keyup',function (e) {
+            if(e.keyCode == 13){
+                if(user.value != ""){
+                    username = user.value;
+                    if(searchName(username) == 0){
+                        alert("搜索到" + username + "欢迎您");
+                    }
+                    else {
+                        if(localStorage.obj == undefined){
+                            nameArray.push(username);
+                            localStorage.setItem('object',nameArray);
+                        }
+                        else{
+                            nameArray = localStorage.name.split(',');
+                            nameArray.push(username);
+                            localStorage.setItem('name',nameArray);
+                        }
+                        alert("欢迎您" + username);
+                    }
+                    login.style.display = "none";
+                    hidden.style.display = 'block';
+                }
+            }
+        });
+        function searchName(name) {
+            if(localStorage.getItem('obj')){
+                var temple = localStorage.getItem('obj').split('*');
+                for(i = 0; i < temple.length; i++){
+                    arrayList[i] = JSON.parse(temple[i]);
+                    if(name == arrayList[i].username){
+                        console.log('find');
+                        return i;
+                    }
+                }
+                return undefined;
+            }else{
+                return undefined;
+            }
+        }
+        function load(){
+
+        }
+        test.addEventListener('click',function () {
+            /*localStorage.clear();*/
+            if(user.value != "") {
+                username = user.value;
+                using = searchName(username);
+                if(using){
+                    welcome(using);
+                }
+                else{
+                    var tempJson = {"username" : username, "unfinished" : unfinishedList.innerHTML, "finished" : finishedList.innerHTML};
+                    var str = JSON.stringify(tempJson);
+                    if(localStorage.length == 0){ //localstorage初始化状态
+                        localStorage.setItem('obj',str);
+                    }else{//已有用户存储
+                        str = localStorage.getItem('obj') + '*' + str;
+                        localStorage.setItem('obj',str);
+                    }
+                    using = searchName(username);
+                    welcome(using);
+                }
+            }
+        });
+        function welcome(using) {//欢迎
+            alert("欢迎" + arrayList[using].username)
+            login.style.display = 'none';
+            hidden.style.display = 'block';
+            finishedList.innerHTML = arrayList[using].finished;
+            unfinishedList.innerHTML = arrayList[using].unfinished;
+        }
+    </script>
 </body>
 </html>
