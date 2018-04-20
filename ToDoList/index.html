@@ -52,6 +52,7 @@
             <input class="name" type="text" placeholder="请输入登录名">
             <button id="test">测试</button>
             <button id="add">添加</button>
+            <button id="logIn">登陆</button>
         </div>
         <div class="test">
             <div id="display"></div>
@@ -62,7 +63,7 @@
             <h3 class="h3">TODO List</h3>
         </nav>
         <div class="function">
-            <input id="input" type="text" placeholder="请输入您的任务">
+            <input id="input" type="text" placeholder="请输入您的任务"><button id="addMission">添加任务</button>
         </div>
         <div class="list">
             <div class="unfinished">
@@ -87,80 +88,144 @@
         var test = document.getElementById('test');
         var display = document.getElementById('display');
         var add = document.getElementById('add');
+        var logIn = document.getElementById('logIn');
         var username;
-        var arrayList = new Array();
-        var using;
-        user.addEventListener('keyup',function (e) {
-            if(e.keyCode == 13){
-                if(user.value != ""){
-                    username = user.value;
-                    if(searchName(username) == 0){
-                        alert("搜索到" + username + "欢迎您");
-                    }
-                    else {
-                        if(localStorage.obj == undefined){
-                            nameArray.push(username);
-                            localStorage.setItem('object',nameArray);
-                        }
-                        else{
-                            nameArray = localStorage.name.split(',');
-                            nameArray.push(username);
-                            localStorage.setItem('name',nameArray);
-                        }
-                        alert("欢迎您" + username);
-                    }
-                    login.style.display = "none";
-                    hidden.style.display = 'block';
+        var input = document.getElementById("input");
+        var addMission = document.getElementById('addMission');
+        var unfinishedList = document.getElementById("unfinished-list");
+        var finishedList = document.getElementById("finished-list");
+        function finished() {
+            var unChild = unfinishedList.getElementsByTagName('li');
+            var Child = finishedList.getElementsByTagName('li');
+            for(var i = 0; i < unChild.length; i++){
+                if(unChild[i].checked){
+                    var li = document.createElement('li');
+                    li.innerHTML = unChild[i].innerHTML;
+                    li.checked = true;
+                    save(li.innerHTML);
+                    finishedList.appendChild(li);
+                    unfinishedList.removeChild(unChild[i]);
                 }
             }
-        });
-        function searchName(name) {
-            if(localStorage.getItem('obj')){
-                var temple = localStorage.getItem('obj').split('*');
-                for(i = 0; i < temple.length; i++){
-                    arrayList[i] = JSON.parse(temple[i]);
-                    if(name == arrayList[i].username){
-                        console.log('find');
-                        return i;
-                    }
-                }
-                return undefined;
+        }
+        //保存本地未完成
+        function saveUN(content) {
+            var position = searchName(username);
+            var tempStr = localStorage.getItem('obj').split('*');
+            var tempJson = JSON.parse(tempStr[position]);
+            if(tempJson.unfinished != ""){
+                tempJson.unfinished = tempJson.unfinished + '^' + content;
             }else{
-                return undefined;
+                tempJson.unfinished = content;
+            }
+            var temp = JSON.stringify(tempJson);
+            tempStr[position] = temp;
+            var str = tempStr[0];
+            for(var i = 1; i < tempStr.length; i++){
+                str = str + "*" + tempStr[i];
+            }
+            localStorage.setItem('obj',str);
+        }
+        //保存本地完成
+        function save(content) {
+            var position = searchName(username);
+            var tempStr = localStorage.getItem('obj').split('*');
+            var tempJson = JSON.parse(tempStr[position]);
+            if(tempJson.finished != ""){
+                tempJson.finished = tempJson.finished + '^' + content;
+            }else{
+                tempJson.finished = content;
+            }
+            var temp = JSON.stringify(tempJson);
+            tempStr[position] = temp;
+            var str = tempStr[0];
+            for(var i = 1; i < tempStr.length; i++){
+                str = str + "*" + tempStr[i];
+            }
+            localStorage.setItem('obj',str);
+        }
+        //输入任务，回车
+        addMission.addEventListener('click',function () {
+            var value = input.value;
+            if(value != ""){
+                input.value = "";
+                var li = document.createElement('li');
+                li.innerHTML = "<input type='checkbox' onclick='finished()'>" + value;
+                saveUN(li.innerHTML);
+                unfinishedList.appendChild(li);
+            }
+        });
+        //寻找用户，返回位于第几个字符串
+        function searchName(name) {
+            if (localStorage.getItem('obj')) {
+                var tempStr = localStorage.getItem('obj').split('*');
+                var tempJson = new Array();
+                for (var i = 0; i < tempStr.length; i++) {
+                    tempJson[i] = JSON.parse(tempStr[i]);
+                    if(tempJson[i].username == name)
+                        return i;
+                }
+            }
+            return -1;
+        }
+        //循环添加li,参数：添加个数,添加在哪里,添加的内容（数组）
+        function addLi(length,list,content) {
+            for (var i = 0; i < length; i++){
+                var li = document.createElement('li');
+                li.innerHTML = content[i];
+                list.appendChild(li);
             }
         }
-        function load(){
-
+        //登入时载入
+        function loading() {
+            var position = searchName(username);
+            var tempStr = localStorage.getItem('obj').split('*');
+            var tempJson = JSON.parse(tempStr[position]);
+            tempStr = tempJson.unfinished.split('^');
+            if(tempStr != ""){
+                addLi(tempStr.length,unfinishedList,tempStr);
+            }
+            tempStr = tempJson.finished.split('^');
+            if(tempStr != ""){
+                addLi(tempStr.length,finishedList,tempStr);
+            }
         }
-        test.addEventListener('click',function () {
-            /*localStorage.clear();*/
-            if(user.value != "") {
+        //欢迎用户
+        function welcome(username) {//欢迎
+            alert("欢迎" + username);
+            login.style.display = 'none';
+            loading();
+            hidden.style.display = 'block';
+        }
+        //添加用户
+        add.addEventListener('click',function () {
+            if(user.value != ""){
                 username = user.value;
-                using = searchName(username);
-                if(using){
-                    welcome(using);
-                }
-                else{
-                    var tempJson = {"username" : username, "unfinished" : unfinishedList.innerHTML, "finished" : finishedList.innerHTML};
-                    var str = JSON.stringify(tempJson);
-                    if(localStorage.length == 0){ //localstorage初始化状态
-                        localStorage.setItem('obj',str);
-                    }else{//已有用户存储
-                        str = localStorage.getItem('obj') + '*' + str;
+                //<input type='checkbox' onclick='finished()'>jj^<input type='checkbox' onclick='finished()'>jj
+                var tempJson = {"username" : username, "unfinished" : "", "finished" : ""};
+                var tempStr = JSON.stringify(tempJson);
+                if(localStorage.getItem('obj')){//本地存储内有信息
+                    if(searchName(username) < 0){
+                        var str = localStorage.getItem('obj') + '*' + tempStr;
                         localStorage.setItem('obj',str);
                     }
-                    using = searchName(username);
-                    welcome(using);
+                }else{//本地存储内没信息
+                    localStorage.setItem('obj',tempStr);
                 }
             }
         });
-        function welcome(using) {//欢迎
-            alert("欢迎" + arrayList[using].username)
-            login.style.display = 'none';
-            hidden.style.display = 'block';
-            finishedList.innerHTML = arrayList[using].finished;
-            unfinishedList.innerHTML = arrayList[using].unfinished;
-        }
+        //登陆
+        logIn.addEventListener('click',function () {
+            if(user.value != ""){
+                username = user.value;
+                if(searchName(username) > -1){
+                    welcome(username);
+                }else {
+                    alert("未找到该用户，请先添加");
+                }
+            }
+        });
+
     </script>
 </body>
 </html>
