@@ -16,6 +16,7 @@ nav.meddle{
     background-color: royalblue;
 }
 .h3{
+    display: inline-block;
     font-size: 1.5em;
     margin: 0px 0px 0px 20px;
     padding: 0px;
@@ -23,22 +24,54 @@ nav.meddle{
     line-height: inherit;
     color: white;
 }
+.function{
+    position: relative;
+}
 .function #input{
     height: 40px;
+    width: 100%;
     font-size: 20px;
     line-height: 40px;
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid blueviolet;
-    border-up: 2px solid blueviolet;
+    border: solid 2px dodgerblue;
     box-sizing: border-box;
     outline: none;
+    display: inline-block;
+}
+.function button#addMission,.function button#save{
+    width: 80px;
+    height: 38px;
+    font-size: 15px;
+    line-height: 40px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    top:0px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid dodgerblue;
+    border-right: 1px solid dodgerblue;
+    color: dodgerblue;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+}
+.function button#addMission:hover,.function button#save:hover{
+    background-color: dodgerblue;
+    color: white;
+}
+.function button#addMission{
+    right: 80px;
+}
+.function button#save{
+    right: 0px;
+}
+.list .meddle{
+    border-bottom: 2px solid white;
 }
 .list ul li{
     font-size: 20px;
     height: 50px;
     line-height: 50px;
-    border-bottom: 2px solid palegreen;
+    border-bottom: 2px solid dodgerblue;
     padding-left: 50px;
 }
 .list ul li input{

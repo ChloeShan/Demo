@@ -20,9 +20,14 @@
             display: block;
         }
         .login .box{
-            height: 100%;
+            /*height: 100%;*/
             border: 2px solid seagreen;
             text-align: center;
+            border-radius: 5px;
+            -moz-box-shadow: 10px 10px 5px #348543;
+            -webkit-box-shadow: 10px 10px 5px #348543;
+            -o-box-shadow: 10px 10px 5px #348543;
+            box-shadow: 10px 10px 5px #348543;
         }
         .login .box span{
             display: block;
@@ -40,8 +45,43 @@
             font-size: 20px;
             outline: none;
             border: none;
-            border-bottom: solid 1px black;
+            border-bottom: solid 2px seagreen;
+        }
+        .login .box span{
+            color: #0e753a;
+            text-shadow: 2px 2px 3px #348543;
+        }
+        #welcomeName{
+            position: absolute;
+            top:0px;
+            right: 20px;
+            color: white;
+        }
+        .login .box #add,.login .box #logIn{
+            width: 60px;
+            height: 25px;
+            font-size: 15px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+            outline: none;
+            color: #0e753a;
+            background-color: #43ff7d;
+            border-radius: 5px;
+            border: none;
+            -moz-box-shadow: 2px 2px 10px #348543;
+            -webkit-box-shadow: 2px 2px 10px #348543;
+            -o-box-shadow: 2px 2px 10px #348543;
+            box-shadow: 2px 2px 10px #348543;
+            transition: 0.5s background-color ease, 0.5s color ease;
 
+        }
+        .login .box #add:hover,.login .box #logIn:hover{
+            background-color: #10b751;
+            color: palegreen;
+        }
+        .login .box #add:active,.login .box #logIn:active{
+            border: 2px solid #0e753a;
+            color: palegreen;
         }
     </style>
 </head>
@@ -50,7 +90,6 @@
         <div class="box">
             <span>登陆TODOLIST</span>
             <input class="name" type="text" placeholder="请输入登录名">
-            <button id="test">测试</button>
             <button id="add">添加</button>
             <button id="logIn">登陆</button>
         </div>
@@ -61,16 +100,19 @@
     <div class="hidden">
         <nav id="guide" class="blue">
             <h3 class="h3">TODO List</h3>
+            <div id="welcomeName"></div>
         </nav>
         <div class="function">
-            <input id="input" type="text" placeholder="请输入您的任务"><button id="addMission">添加任务</button>
+            <input id="input" type="text" placeholder="请输入您的任务"><button id="addMission">添加任务</button><button id="save">保存</button>
         </div>
         <div class="list">
             <div class="unfinished">
                 <nav class="blue meddle">
                     <h3 class="h3">待办任务</h3>
                 </nav>
-                <ul id="unfinished-list"></ul>
+                <ul id="unfinished-list">
+                    <li><input type='checkbox'>f<button class="delete">删除</button> </li>
+                </ul>
             </div>
             <div class="finished">
                 <nav class="blue meddle">
@@ -80,13 +122,10 @@
             </div>
         </div>
     </div>
-    <script src="js/js.js"></script>
     <script>
         var login = document.getElementsByClassName('login')[0];
         var user = document.getElementsByClassName('name')[0];
         var hidden = document.getElementsByClassName('hidden')[0];
-        var test = document.getElementById('test');
-        var display = document.getElementById('display');
         var add = document.getElementById('add');
         var logIn = document.getElementById('logIn');
         var username;
@@ -94,30 +133,33 @@
         var addMission = document.getElementById('addMission');
         var unfinishedList = document.getElementById("unfinished-list");
         var finishedList = document.getElementById("finished-list");
-        function finished() {
-            var unChild = unfinishedList.getElementsByTagName('li');
-            var Child = finishedList.getElementsByTagName('li');
-            for(var i = 0; i < unChild.length; i++){
-                if(unChild[i].checked){
-                    var li = document.createElement('li');
-                    li.innerHTML = unChild[i].innerHTML;
-                    li.checked = true;
-                    save(li.innerHTML);
-                    finishedList.appendChild(li);
-                    unfinishedList.removeChild(unChild[i]);
-                }
+        var save = document.getElementById("save");
+        var welcomeName = document.getElementById('welcomeName');
+        //复选框选中or未选中
+        unfinishedList.addEventListener('click',function () {
+            var input = unfinishedList.getElementsByTagName('input');
+            for(var i = 0; i < input.length; i++){
+                if(input[i].checked == true)
+                    finishedList.appendChild(input[i].parentNode);
             }
-        }
-        //保存本地未完成
-        function saveUN(content) {
+        });
+        finishedList.addEventListener('click',function () {
+            var input = finishedList.getElementsByTagName('input');
+            for(var i = 0; i < input.length; i++){
+                if(input[i].checked == false)
+                    unfinishedList.appendChild(input[i].parentNode);
+            }
+        });
+        //保存任务
+        save.addEventListener("click",function () {
+           alert(unfinishedList.innerHTML);
             var position = searchName(username);
             var tempStr = localStorage.getItem('obj').split('*');
             var tempJson = JSON.parse(tempStr[position]);
-            if(tempJson.unfinished != ""){
-                tempJson.unfinished = tempJson.unfinished + '^' + content;
-            }else{
-                tempJson.unfinished = content;
-            }
+            var tempStrr = unfinishedList.innerHTML;
+            tempJson.unfinished = tempStrr;
+            tempStrr = finishedList.innerHTML;
+            tempJson.finished = tempStrr;
             var temp = JSON.stringify(tempJson);
             tempStr[position] = temp;
             var str = tempStr[0];
@@ -125,69 +167,52 @@
                 str = str + "*" + tempStr[i];
             }
             localStorage.setItem('obj',str);
-        }
-        //保存本地完成
-        function save(content) {
-            var position = searchName(username);
-            var tempStr = localStorage.getItem('obj').split('*');
-            var tempJson = JSON.parse(tempStr[position]);
-            if(tempJson.finished != ""){
-                tempJson.finished = tempJson.finished + '^' + content;
-            }else{
-                tempJson.finished = content;
-            }
-            var temp = JSON.stringify(tempJson);
-            tempStr[position] = temp;
-            var str = tempStr[0];
-            for(var i = 1; i < tempStr.length; i++){
-                str = str + "*" + tempStr[i];
-            }
-            localStorage.setItem('obj',str);
-        }
-        //输入任务，回车
+        });
+        //添加任务
         addMission.addEventListener('click',function () {
             var value = input.value;
             if(value != ""){
                 input.value = "";
                 var li = document.createElement('li');
-                li.innerHTML = "<input type='checkbox' onclick='finished()'>" + value;
-                saveUN(li.innerHTML);
+                li.innerHTML = "<input type='checkbox'>" + value;
+                /*saveUN(li.innerHTML);*/
                 unfinishedList.appendChild(li);
             }
         });
         //寻找用户，返回位于第几个字符串
         function searchName(name) {
             if (localStorage.getItem('obj')) {
+                /*console.log("存在obj");*/
                 var tempStr = localStorage.getItem('obj').split('*');
                 var tempJson = new Array();
-                for (var i = 0; i < tempStr.length; i++) {
+                for(var i = 0; i < tempStr.length; i++) {
                     tempJson[i] = JSON.parse(tempStr[i]);
-                    if(tempJson[i].username == name)
+                    if(tempJson[i].username == name){
+                        /*console.log("找到用户" + name);*/
                         return i;
+                    }
                 }
+                /*console.log("未找到用户，可以新建");*/
+                return -1;
             }
+            console.log("不存在obj");
             return -1;
-        }
-        //循环添加li,参数：添加个数,添加在哪里,添加的内容（数组）
-        function addLi(length,list,content) {
-            for (var i = 0; i < length; i++){
-                var li = document.createElement('li');
-                li.innerHTML = content[i];
-                list.appendChild(li);
-            }
         }
         //登入时载入
         function loading() {
+            if(welcomeName){
+                welcomeName.textContent = "欢迎您," + username + ;
+            }
             var position = searchName(username);
             var tempStr = localStorage.getItem('obj').split('*');
             var tempJson = JSON.parse(tempStr[position]);
-            tempStr = tempJson.unfinished.split('^');
-            if(tempStr != ""){
-                addLi(tempStr.length,unfinishedList,tempStr);
-            }
-            tempStr = tempJson.finished.split('^');
-            if(tempStr != ""){
-                addLi(tempStr.length,finishedList,tempStr);
+            tempStr = tempJson.unfinished;
+            unfinishedList.innerHTML = tempStr;
+            tempStr = tempJson.finished;
+            finishedList.innerHTML = tempStr;
+            var input = finishedList.getElementsByTagName("input");
+            for(var i = 0; i < input.length; i++){
+                input[i].checked = true;
             }
         }
         //欢迎用户
@@ -201,11 +226,14 @@
         add.addEventListener('click',function () {
             if(user.value != ""){
                 username = user.value;
+
                 //<input type='checkbox' onclick='finished()'>jj^<input type='checkbox' onclick='finished()'>jj
                 var tempJson = {"username" : username, "unfinished" : "", "finished" : ""};
                 var tempStr = JSON.stringify(tempJson);
                 if(localStorage.getItem('obj')){//本地存储内有信息
+                    console.log(searchName(username));
                     if(searchName(username) < 0){
+                        console.log('1');
                         var str = localStorage.getItem('obj') + '*' + tempStr;
                         localStorage.setItem('obj',str);
                     }
@@ -225,7 +253,6 @@
                 }
             }
         });
-
     </script>
 </body>
 </html>
